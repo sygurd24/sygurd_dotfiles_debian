@@ -8,7 +8,7 @@ To install these dotfiles on a new system:
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+    git clone https://github.com/sygurd24/sygurd_dotfiles_debian.git ~/dotfiles
     ```
 2.  Run the installation script:
     ```bash
