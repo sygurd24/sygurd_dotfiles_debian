@@ -15,8 +15,20 @@ warn() {
 # 1. Install dependencies
 PACKAGES="bspwm sxhkd polybar picom rofi kitty zsh thunar gtk2-engines-murrine gtk2-engines-pixbuf"
 
-log "Dependencies needed: $PACKAGES"
-log "Usually you would run: sudo apt update && sudo apt install -y $PACKAGES"
+log "Detected Debian/Ubuntu system. Installing packages..."
+if command -v apt &> /dev/null; then
+    sudo apt update
+    sudo apt install -y $PACKAGES
+    
+    # Try to install fastfetch if available, otherwise warn
+    if apt-cache search fastfetch | grep -q fastfetch; then
+        sudo apt install -y fastfetch
+    else
+        warn "Fastfetch not found in default repos. You might need to install it manually from GitHub releases."
+    fi
+else
+    warn "Package manager 'apt' not found. Please install these manually: $PACKAGES"
+fi
 
 # 2. Link Dotfiles
 create_link() {

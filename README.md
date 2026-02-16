@@ -18,7 +18,7 @@ To install these dotfiles on a new system:
     ```
 
 The `install.sh` script will:
--   Install necessary dependencies (bspwm, polybar, etc.).
+-   **Automatically install** necessary dependencies (bspwm, polybar, kitty, rofi, zsh, etc.) using `apt`.
 -   Backup existing configuration files.
 -   Create symlinks from `~/dotfiles` to your home directory.
 
@@ -26,5 +26,4 @@ The `install.sh` script will:
 
 -   `home/`: Top-level dotfiles (e.g., `.zshrc`, `.Xresources`).
 -   `config/`: Directories/files for `~/.config/` (e.g., `bspwm/`, `polybar/`).
--   `install.sh`: Script to safe-install on a new machine.
--   `migrate.sh`: Script used to migrate the initial config (you likely won't need this again).
+-   `install.sh`: Script to automatically setup the environment on a new machine.
