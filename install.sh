@@ -62,6 +62,13 @@ if [ -d "$DOTFILES_DIR/home" ]; then
     done
 fi
 
+# Link Wallpapers
+if [ -d "$DOTFILES_DIR/wallpapers" ]; then
+    log "Linking Wallpapers..."
+    mkdir -p "$HOME/Pictures"
+    create_link "$DOTFILES_DIR/wallpapers" "$HOME/Pictures/Wallpapers"
+fi
+
 # Link Config directories
 if [ -d "$DOTFILES_DIR/config" ]; then
     find "$DOTFILES_DIR/config" -maxdepth 1 -mindepth 1 | while read file; do

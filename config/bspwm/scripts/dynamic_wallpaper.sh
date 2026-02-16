@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR="/home/sygurd/Pictures/Wallpapers"
+DIR="$HOME/Pictures/Wallpapers"
 NOCHE="$DIR/firewatch_noche.png"
 TRANSICION_DIA="$DIR/firewatch_madrugada.jpg"
 TRANSICION_DIA_NUEVA="$DIR/firewatch_transiciondia.png"
