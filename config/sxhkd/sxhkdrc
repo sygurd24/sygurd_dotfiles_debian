@@ -1,0 +1,228 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	kitty
+
+# program launcher
+super + @space
+	rofi -show drun
+
+# make sxhkd reload its configuration files:
+# Browser Audio Control (Toggle Visibility)
+alt + Escape
+	~/.config/polybar/scripts/browser-control.sh --toggle-visibility
+
+# Task Manager (btop)
+ctrl + shift + Escape
+	kitty -e btop
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window
+
+#
+# state/flags
+#
+
+# set the window state
+# set the window state
+super + {t,shift + t,s}
+	bspc node -t {tiled,pseudo_tiled,floating}
+
+# toggle fullscreen
+
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k}
+	bspc node -{f,n} {west,south,north}
+
+# move the node east
+super + shift + l
+	bspc node -n east
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+# focus the last node/desktop
+super + grave
+	bspc node -f last
+
+alt + Tab
+	/home/sygurd/.config/bspwm/scripts/desktop_cycle.sh
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# Move window (Grafting) - Super + Alt + Ctrl + Arrows
+super + alt + ctrl + {Left,Down,Up,Right}
+	bspc node -n {west,south,north,east}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# Redimensionar Ventana (Smart Resize)
+# Super + Alt + Shift + Flechas
+# Intenta mover el borde exterior; si falla (está en el borde), mueve el interior.
+super + alt + shift + {Left,Down,Up,Right}
+	bspc node -z {left -20 0 || bspc node -z right -20 0, \
+	              bottom 0 20 || bspc node -z top 0 20, \
+	              top 0 -20 || bspc node -z bottom 0 -20, \
+	              right 20 0 || bspc node -z left 20 0}
+
+# move a floating window
+# move a floating window
+super + shift + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# focus the node in the given direction (Standard Arrows)
+super + {Left,Down,Up,Right}
+	bspc node -f {west,south,north,east}
+
+# --- Aplicaciones ---
+
+# Explorador de Archivos (Thunar)
+# Explorador de Archivos (Thunar)
+super + e
+	thunar
+
+# Navegador Firefox
+super + f
+	firefox
+
+# Captura de pantalla (Maim / Copy on Release)
+# super + shift + s: Selector -> Clipboard (Windows-style)
+super + shift + s
+	/home/sygurd/.config/bspwm/scripts/screenshot_copy.sh
+
+# Tecla ImprPant (PrintScreen)
+Print
+	flameshot gui
+
+
+
+#
+# Volumen / Audio
+#
+
+
+
+# Teclas Multimedia Std (Opcional)
+# Teclas Multimedia Std (Opcional)
+XF86AudioMute
+	~/.config/polybar/scripts/volume.sh mute
+
+XF86AudioLowerVolume
+	~/.config/polybar/scripts/volume.sh down
+
+XF86AudioRaiseVolume
+	~/.config/polybar/scripts/volume.sh up
+
+# Brillo de pantalla
+XF86MonBrightnessDown
+	~/.config/polybar/scripts/brightness.sh down
+
+XF86MonBrightnessUp
+	~/.config/polybar/scripts/brightness.sh up
+
+# Bloquear Pantalla (Blur)
+super + l
+	/home/sygurd/.config/bspwm/scripts/lock.sh
+
+# Menu de Apagado (Rofi)
+super + shift + BackSpace
+	~/.config/rofi/powermenu.sh
+
+# Clipboard Manager (Greenclip)
+super + v
+	/home/sygurd/.config/bspwm/scripts/greenclip_wrapper.sh | rofi -dmenu -p "Clipboard" -theme /home/sygurd/.config/rofi/clipboard.rasi | /home/sygurd/.config/bspwm/scripts/clipboard_fixer.sh
+
+# --- Connectivity Menus ---
+
+# Wi-Fi Menu (Super + Shift + N)
+super + shift + n
+	/home/sygurd/.config/polybar/scripts/rofi-wifi.py
+
+# Bluetooth Menu (Super + Shift + B)
+super + shift + b
+	/home/sygurd/.config/polybar/scripts/rofi-bluetooth.sh
+
+# --- Global Media Control (Browser) ---
+
+alt + space
+	~/.config/polybar/scripts/browser-control.sh --play-pause
+
+alt + {Right,Up}
+	~/.config/polybar/scripts/browser-control.sh --next
+
+alt + {Left,Down}
+	~/.config/polybar/scripts/browser-control.sh --prev
+
+# Opacity Toggle (Super + Alt + O)
+super + alt + o
+	/home/sygurd/.config/bspwm/scripts/toggle_opacity.sh

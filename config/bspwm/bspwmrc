@@ -1,0 +1,72 @@
+#! /bin/sh
+
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Configuración input (Touchpad: scroll "invertido"/natural)
+xinput set-prop "ELAN1200:00 04F3:30F7 Touchpad" "libinput Natural Scrolling Enabled" 1 2>/dev/null &
+# Ajustar velocidad de scroll (Pixel Distance: mayor valor = menor velocidad)
+xinput set-prop "ELAN1200:00 04F3:30F7 Touchpad" "libinput Scrolling Pixel Distance" 35 2>/dev/null &
+
+# Touchpad Config
+# Enable Tapping and Drag Lock (Lift finger and continue dragging)
+xinput set-prop "ELAN1200:00 04F3:30F7 Touchpad" "libinput Tapping Enabled" 1
+xinput set-prop "ELAN1200:00 04F3:30F7 Touchpad" "libinput Tapping Drag Lock Enabled" 1
+
+# Clipboard Manager
+# Clipboard Manager
+# Clear history on startup for privacy/clean slate
+# Clear history on startup for privacy/clean slate
+rm -f ~/.cache/greenclip.history
+pgrep -x greenclip > /dev/null || /home/sygurd/.local/bin/greenclip daemon &
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config border_width         2
+bspc config window_gap          12
+bspc config top_padding         37
+
+bspc config focused_border_color "#00838F"
+bspc config normal_border_color  "#333333"
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+# Firefox PiP (ESR & Standard): Robust Matching
+# Match by Instance (Toolkit) AND Class (Firefox-esr or firefox)
+bspc rule -a 'firefox:Toolkit' state=tiled focus=on follow=on
+bspc rule -a 'Firefox-esr:Toolkit' state=tiled focus=on follow=on
+bspc rule -a 'Firefox-esr:Picture-in-Picture' state=tiled focus=on follow=on
+
+# Bloqueo automatico en suspension/hibernacion
+xss-lock -- /home/sygurd/.config/bspwm/scripts/lock.sh &
+
+# feh --bg-scale ~/Pictures/Wallpapers/firewatch_dia.jpg &
+~/.config/polybar/launch.sh &
+pgrep -x picom > /dev/null || picom &
+
+# Bluetooth Privacy Guard (Pause on Disconnect)
+pgrep -f bt-privacy.py > /dev/null || /home/sygurd/.config/bspwm/scripts/bt-privacy.py &
+
+# Cava Dynamic Input Guard (Prevent Microphone Pickup)
+pgrep -f cava-dynamic.py > /dev/null || /home/sygurd/.config/polybar/scripts/cava-dynamic.py &
+
+# Fix cursor
+xsetroot -cursor_name left_ptr
+
+# Mixer de Audio (Pavucontrol) - Flotante y centrado
+bspc rule -a Pavucontrol state=floating center=true
+
+
+# Kill existing instances to prevent duplicates
+killall -q -w dynamic_wallpaper.sh
+# Start the dynamic wallpaper and force time sync
+/home/sygurd/.config/bspwm/scripts/force_time_sync.sh &

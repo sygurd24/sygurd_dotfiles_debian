@@ -1,0 +1,35 @@
+        _,met$$$$$gg.
+     ,g$$$$$$$$$$$$$$$P.
+   ,g$$P""       """Y$$.".
+  ,$$P'              `$$$.
+',$$P       ,ggs.     `$$b:
+`d$$'     ,"'   .    $$$
+ $$P      d     ,    $$P
+ $$:      $   -    ,d$$'
+ $$;      Y._   _,d'
+ Y$$.    `.`"Y$$$$P"'
+ `$$b      "-.__
+  `Y$$b
+   `Y$$.
+     `$$b.
+       `Y$$b.
+         `"Y$b._
+             `""""[1G[16A[31Csygurd@ASUSVivoBook15-Debian
+[31C----------------------------
+[31COS: Debian GNU/Linux 13 (trixie) x86_64
+[31CHost: VivoBook_ASUSLaptop X513EQN_K513EQ (1.0)
+[31CKernel: Linux 6.12.63+deb13-amd64
+[31CUptime: 2 hours, 36 mins
+[31CPackages: 1616 (dpkg)
+[31CShell: bash 5.2.37
+[31CWM: bspwm (X11)
+[31CTheme: Arc-Dark [GTK3]
+[31CIcons: Papirus-Dark [GTK3]
+[31CTerminal: antigravity
+[31CCPU: 11th Gen Intel(R) Core(TM) i7-1165G7 (8) @ 4.70 GHz
+[31CGPU 1: NVIDIA GeForce MX350 [Discrete]
+[31CGPU 2: Intel Iris Xe Graphics @ 1.30 GHz [Integrated]
+[31CMemory: 7.78 GiB / 15.33 GiB (51%)
+[31C
+[31C[40m   [41m   [42m   [43m   [44m   [45m   [46m   [47m   [m
+[31C[100m   [101m   [102m   [103m   [104m   [105m   [106m   [107m   [m
