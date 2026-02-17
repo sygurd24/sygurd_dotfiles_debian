@@ -1,6 +1,11 @@
 # My Debian Dotfiles
 
-This repository contains my personal configuration for Debian, including bspwm, polybar, rofi, zsh, and more.
+This repository contains my personal configuration for Debian, including:
+- **Window Manager**: `bspwm` + `sxhkd` (shortcuts)
+- **Status Bar**: `polybar`
+- **Themes**: `Arc-Dark` (GTK) + `Papirus-Dark` (Icons) + `JetBrainsMono Nerd Font`
+- **Terminal**: `kitty` + `zsh` + `powerlevel10k` theme + plugins (autosuggestions, syntax-highlighting)
+- **Launcher**: `rofi`
 
 ## Installation
 
