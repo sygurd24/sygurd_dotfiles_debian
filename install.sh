@@ -30,6 +30,15 @@ else
     warn "Package manager 'apt' not found. Please install these manually: $PACKAGES"
 fi
 
+# 1.1 Install Powerlevel10k
+if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
+    log "Installing Powerlevel10k..."
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+    log "Powerlevel10k installed to ~/powerlevel10k"
+else
+    log "Powerlevel10k already installed."
+fi
+
 # 2. Link Dotfiles
 create_link() {
     local src="$1"
