@@ -13,7 +13,7 @@ warn() {
 }
 
 # 1. Install dependencies
-PACKAGES="bspwm sxhkd polybar picom rofi kitty zsh thunar gtk2-engines-murrine gtk2-engines-pixbuf lsd bat xinput xss-lock feh scrot imagemagick libinput-tools libnotify-bin arc-theme papirus-icon-theme"
+PACKAGES="bspwm sxhkd polybar picom rofi kitty zsh thunar gtk2-engines-murrine gtk2-engines-pixbuf lsd bat xinput xss-lock feh scrot imagemagick libinput-tools libnotify-bin arc-theme papirus-icon-theme firefox-esr"
 
 log "Detected Debian/Ubuntu system. Installing packages..."
 if command -v apt &> /dev/null; then

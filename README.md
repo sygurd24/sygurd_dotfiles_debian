@@ -4,6 +4,7 @@ This repository contains my personal configuration for Debian, including:
 - **Window Manager**: `bspwm` + `sxhkd` (shortcuts)
 - **Status Bar**: `polybar`
 - **Themes**: `Arc-Dark` (GTK) + `Papirus-Dark` (Icons) + `JetBrainsMono Nerd Font`
+- **Applications**: `Firefox ESR`, `Thunar`, `LSD`, `Bat`
 - **Terminal**: `kitty` + `zsh` + `powerlevel10k` theme + plugins (autosuggestions, syntax-highlighting)
 - **Launcher**: `rofi`
 
