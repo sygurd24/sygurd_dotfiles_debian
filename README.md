@@ -41,4 +41,10 @@ sudo ./setup_hibernate.sh
 ```
 The script will **automatically detect your RAM** and recommend a swap size (usually RAM + 1GB). It will ask you for confirmation.
 
-*Note: This script modifies GRUB and swap settings.*
+
+## Login Screen (Optional)
+To setup the login screen (LightDM) with your specific wallpaper (`pantallabloque_debian.png`):
+```bash
+sudo ./setup_lightdm.sh
+```
+
