@@ -27,3 +27,13 @@ The `install.sh` script will:
 -   `home/`: Top-level dotfiles (e.g., `.zshrc`, `.Xresources`).
 -   `config/`: Directories/files for `~/.config/` (e.g., `bspwm/`, `polybar/`).
 -   `install.sh`: Script to automatically setup the environment on a new machine.
+-   `setup_hibernate.sh`: Utility script to configure swap and hibernation (run manually if needed).
+
+## Hibernation
+If you want to enable hibernation (suspend-to-disk):
+```bash
+sudo ./setup_hibernate.sh
+```
+The script will **automatically detect your RAM** and recommend a swap size (usually RAM + 1GB). It will ask you for confirmation.
+
+*Note: This script modifies GRUB and swap settings.*
