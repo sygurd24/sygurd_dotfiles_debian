@@ -13,7 +13,7 @@ warn() {
 }
 
 # 1. Install dependencies
-PACKAGES="bspwm sxhkd polybar picom rofi kitty zsh thunar gtk2-engines-murrine gtk2-engines-pixbuf"
+PACKAGES="bspwm sxhkd polybar picom rofi kitty zsh thunar gtk2-engines-murrine gtk2-engines-pixbuf lsd bat xinput xss-lock feh scrot imagemagick libinput-tools libnotify-bin arc-theme papirus-icon-theme"
 
 log "Detected Debian/Ubuntu system. Installing packages..."
 if command -v apt &> /dev/null; then
@@ -37,6 +37,37 @@ if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
     log "Powerlevel10k installed to ~/powerlevel10k"
 else
     log "Powerlevel10k already installed."
+fi
+
+
+
+# 1.2 Install Zsh Plugins
+mkdir -p "$HOME/.zsh"
+if [ ! -d "$HOME/.zsh/zsh-autosuggestions" ]; then
+    log "Installing zsh-autosuggestions..."
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME/.zsh/zsh-autosuggestions"
+fi
+if [ ! -d "$HOME/.zsh/zsh-syntax-highlighting" ]; then
+    log "Installing zsh-syntax-highlighting..."
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh/zsh-syntax-highlighting"
+fi
+
+# 1.3 Install Fonts
+if [ -d "$DOTFILES_DIR/fonts" ]; then
+    log "Installing Fonts..."
+    mkdir -p "$HOME/.local/share/fonts"
+    cp -rn "$DOTFILES_DIR/fonts/"* "$HOME/.local/share/fonts/"
+    if command -v fc-cache &> /dev/null; then
+        fc-cache -f
+    fi
+fi
+
+# 1.4 Install Binaries (Greenclip, etc.)
+if [ -d "$DOTFILES_DIR/bin" ]; then
+    log "Installing Binaries..."
+    mkdir -p "$HOME/.local/bin"
+    cp -rn "$DOTFILES_DIR/bin/"* "$HOME/.local/bin/"
+    chmod +x "$HOME/.local/bin/"*
 fi
 
 # 2. Link Dotfiles
