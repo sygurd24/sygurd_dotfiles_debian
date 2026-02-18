@@ -8,6 +8,8 @@ This repository contains my personal configuration for Debian, including:
 - **Terminal**: `kitty` + `zsh` + `powerlevel10k` theme + plugins (autosuggestions, syntax-highlighting)
 - **Launcher**: `rofi`
 
+![Desktop Showcase](screenshots/showcase.png)
+
 ## Installation
 
 To install these dotfiles on a new system:
@@ -32,6 +34,8 @@ The `install.sh` script will:
 
 -   `home/`: Top-level dotfiles (e.g., `.zshrc`, `.Xresources`).
 -   `config/`: Directories/files for `~/.config/` (e.g., `bspwm/`, `polybar/`).
+### Clipboard
+- `Super + V`: Open clipboard history (Greenclip). Select an item to copy it to the clipboard, then use `Ctrl + V` to paste it.
 -   `install.sh`: Script to automatically setup the environment on a new machine.
 -   `setup_hibernate.sh`: Utility script to configure swap and hibernation (run manually if needed).
 

@@ -119,3 +119,15 @@ if [ -d "$DOTFILES_DIR/config" ]; then
 fi
 
 log "Installation complete!"
+
+# Configure Greenclip Static History File (Optional but recommended)
+if [ ! -f "$HOME/.config/greenclip.toml" ]; then
+    echo '[greenclip]
+  history_file = "~/.cache/greenclip.history"
+  max_history_length = 50
+  max_selection_length_bytes = 1450
+  trim_space_from_selection = true
+  use_primary_selection_as_input = false
+  blacklisted_applications = []
+  clipboard_selection_timeout_millis = 1000' > "$HOME/.config/greenclip.toml"
+fi

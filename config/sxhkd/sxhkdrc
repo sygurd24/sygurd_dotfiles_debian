@@ -200,7 +200,7 @@ super + shift + BackSpace
 
 # Clipboard Manager (Greenclip)
 super + v
-	/home/sygurd/.config/bspwm/scripts/greenclip_wrapper.sh | rofi -dmenu -p "Clipboard" -theme /home/sygurd/.config/rofi/clipboard.rasi | /home/sygurd/.config/bspwm/scripts/clipboard_fixer.sh
+	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # --- Connectivity Menus ---
 
