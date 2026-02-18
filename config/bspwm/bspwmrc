@@ -17,8 +17,12 @@ xinput set-prop "ELAN1200:00 04F3:30F7 Touchpad" "libinput Tapping Drag Lock Ena
 # Clipboard Manager
 # Clear history on startup for privacy/clean slate
 # Clear history on startup for privacy/clean slate
-rm -f ~/.cache/greenclip.history
-pgrep -x greenclip > /dev/null || /home/sygurd/.local/bin/greenclip daemon &
+# rm -f ~/.cache/greenclip.history
+# Clipboard Manager
+# Start daemon if not running
+if ! pgrep -x "greenclip" > /dev/null; then
+    /home/sygurd/.local/bin/greenclip daemon &
+fi
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
